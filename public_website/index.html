@@ -7,15 +7,22 @@
     <style>
         body { background: #000000; color: #00ff3c; font-family: comic sans ms, sans-serif; text-align: center; margin: 0; }
         .container { margin-top: 60px; }
+        .page { display: none; }
+        .page:target { display: block; }
+        #page1 { display: block; }
         h1 { font-size: 2.2em; }
         .desc { margin: 20px auto; max-width: 400px; font-size: 1.1em; }
-        .button { background: #00ff26; color: #000000; border: none; padding: 12px 32px; font-size: 1.1em; border-radius: 6px; cursor: pointer; margin: 20px 0; }
+        .button { background: #00ff26; color: #000000; border: none; padding: 12px 32px; font-size: 1.1em; border-radius: 6px; cursor: pointer; margin: 20px 0; text-decoration: none; display: inline-block; }
         .button:hover { background: #00ff26; }
         footer { margin-top: 60px; color: #000000; font-size: 0.9em; }
+        .search-box { background: #1a1a1a; border: 2px solid #00ff3c; padding: 10px; border-radius: 8px; max-width: 500px; margin: 20px auto; }
+        .search-input { width: 80%; padding: 8px; background: #000; color: #00ff3c; border: 1px solid #00ff3c; font-size: 1em; }
+        .link-list { text-align: left; max-width: 500px; margin: 20px auto; }
+        .link-item { background: #1a1a1a; padding: 12px; margin: 10px 0; border-left: 4px solid #00ff3c; }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div id="page1" class="page container">
         <h1>Polyblocks Multiplayer Demo Website 0.1</h1>
         <div class="desc">
             Welcome to the Polyblocks Multiplayer demo site!<br>
@@ -34,9 +41,57 @@
         </div>
         <a href="https://github.com/Hack6297/polyblocks" target="_blank" class="button">View Source on GitHub</a>
         <a href="DEMOGAME.zip" download class="button" style="display:block;max-width:320px;margin:32px auto 0 auto;font-size:1.3em;">Download DEMOGAME</a>
+        <a href="#page2" class="button" style="display:block;max-width:320px;margin:32px auto 0 auto;font-size:1.3em;background:#00ff3c;">Next Page →</a>
+    </div>
+
+    <div id="page2" class="page container">
+        <h1 style="font-size:3em;margin-bottom:30px;">NESA</h1>
+        
+        <div class="search-box" style="max-width:600px;padding:0;background:transparent;border:none;">
+            <div style="display:flex;align-items:center;background:#1a1a1a;border:2px solid #00ff3c;border-radius:24px;padding:12px 20px;">
+                <span style="font-size:1.2em;margin-right:10px;">🔍 Coming Soon!</span>
+                <input type="text" class="search-input" placeholder="Search NESA or type a URL" style="flex:1;border:none;outline:none;background:transparent;">
+            </div>
+            <div style="margin-top:20px;">
+                <a href="#search" class="button" style="margin:0 10px;padding:10px 24px;background:#1a1a1a;border:1px solid #00ff3c;">NESA Search</a>
+                <a href="#lucky" class="button" style="margin:0 10px;padding:10px 24px;background:#1a1a1a;border:1px solid #00ff3c;">I'm Feeling Lucky</a>
+            </div>
+        </div>
+
+        <p style="margin-top:40px;font-size:0.9em;">Popular Links and Resources:</p>
+        <div class="link-list">
+            <div class="link-item">
+                🌐 <strong>https://polyblocks.onrender.com</strong><br>
+                Polyblocks Multiplayer Server
+            </div>
+            <div class="link-item">
+                🌐 <strong>https://takemeback.to/events/date/1998</strong><br>
+                Time Travel to 1998
+            </div>
+            <div class="link-item">
+                🌐 <strong>https://elgoog.im/google1998/</strong><br>
+                Google 1998 Simulator
+            </div>
+            <div class="link-item">
+                🌐 <strong>https://classic.minecraft.net/</strong><br>
+                Minecraft Classic
+            </div>
+            <div class="link-item">
+                🌐 <strong>https://www.example.com/</strong><br>
+                Example Domain
+            </div>
+            <div class="link-item">
+                🌐 <strong>https://www.coolmathgames.com/</strong><br>
+                Cool Math Games
+            </div>
+        </div>
+
+        <a href="#page1" class="button" style="margin-top:20px;">← Back to Home</a>
     </div>
     <footer>
         &copy; 2025 Polyblocks Multiplayer Demo. Powered by Render.
     </footer>
 </body>
 </html>
+
+hey if you see this message, that means you have a good eye for detail, and vision!
