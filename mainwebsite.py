@@ -30,7 +30,10 @@ settings.configure(
 )
 
 def index(request):
-    with open(os.path.join(BASE_DIR, 'public_website', 'index.html'), encoding='utf-8') as f:
+    index_path = os.path.join(BASE_DIR, 'index.html')
+    if not os.path.exists(index_path):
+        index_path = os.path.join(BASE_DIR, 'public_website', 'index.html')
+    with open(index_path, encoding='utf-8') as f:
         return HttpResponse(f.read())
 
 def download_demogame(request):
