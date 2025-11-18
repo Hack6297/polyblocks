@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NESA 95</title>
-    <meta name="description" content="Latest news and updates from NESA 95">
+    <title>Nesa Tab</title>
+    <meta name="description" content="Latest news and updates from NESA 1995">
     <style>
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
@@ -26,12 +26,34 @@
             gap: 20px;
         }
         
-        .title-logo {
-            max-width: 400px;
-            height: auto;
-            image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
+        .title h2 {
+            color: #ffffff;
+            font-size: 48px;
+            text-shadow: 5px 5px 0px #747474;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+        
+        .pixelated-logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        
+        .logo-search {
+            color: #4169E1;
+            font-size: 32px;
+            text-shadow: 2px 2px 0px #000;
+            letter-spacing: 2px;
+        }
+        
+        .logo-95 {
+            color: #DC143C;
+            font-size: 48px;
+            text-shadow: 2px 2px 0px #000;
+            letter-spacing: 2px;
         }
         
         .title-text {
@@ -81,7 +103,7 @@
         }
         
         .search-button:hover {
-            background-color: #17e600;
+            background-color: #ffffff;
         }
         
         .button-container {
@@ -193,13 +215,13 @@
 </head>
 <body>
     <div class="title">
-        <img src="nesa95-logo.png" alt="NESA95 Logo" class="title-logo">
+        <h2>NESA 95</h2>
     </div>
     <div class="search-container">
-        <input type="text" class="search-box" placeholder="Search NESA95...">
+        <input type="text" class="search-box" placeholder="Search Nesa 95...">
         <div class="button-container">
-            <button class="search-button" onclick="searchGoogle()">FIND</button>
-            <button class="search-button" onclick="clearSearch()">CLEAR</button>
+            <button class="search-button" onclick="searchGoogle()">Find:</button>
+            <button class="search-button" onclick="clearSearch()">Clear:</button>
         </div>
     </div>
     
