@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nesa Tab</title>
-    <meta name="description" content="Latest news and updates from NESA 1995">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="description" content="Latest news and updates from Nesa Tab">
     <style>
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
@@ -255,3 +256,14 @@
             <p>and more to come in future updates. (More info coming soon!) 📈</p>
             <button class="download-button" onclick="downloadGame()">DOWNLOAD 📥</button>
         </div>
+    </div>
+
+    <script>
+        // Keep server awake by pinging every 10 minutes
+        setInterval(() => {
+            fetch('https://polyblocks.onrender.com/ping')
+                .catch(() => {}); // Ignore errors
+        }, 600000); // 10 minutes
+    </script>
+</body>
+</html>
