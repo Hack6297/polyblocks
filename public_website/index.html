@@ -183,8 +183,8 @@
             const searchTerm = searchInput.value.trim();
             
             if (searchTerm) {
-                const googleUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchTerm);
-                window.open(googleUrl, '_blank');
+                // Use NESA search engine
+                window.location.href = 'search_new.html?q=' + encodeURIComponent(searchTerm);
             } else {
                 alert('Please enter something to search!');
             }
