@@ -143,7 +143,7 @@
 </head>
 <body>
     <div class="header">
-        <a href="nesa95 copy.html" class="logo">NESA 95</a>
+        <a href="index.html" class="logo">NESA 95</a>
         <div class="search-header">
             <input type="text" class="search-box" id="searchInput" placeholder="Search NESA...">
         </div>
@@ -236,13 +236,13 @@
             const searchTerm = searchInput.value.trim();
             
             if (searchTerm) {
-                window.location.href = `search_new.html?q=${encodeURIComponent(searchTerm)}`;
+                window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
             }
         }
         
         function clearSearch() {
             document.getElementById('searchInput').value = '';
-            window.location.href = 'search_new.html';
+            window.location.href = 'search.html';
         }
         
         function showAllWebsites() {
