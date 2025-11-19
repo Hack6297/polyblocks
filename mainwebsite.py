@@ -36,6 +36,20 @@ def index(request):
     with open(index_path, encoding='utf-8') as f:
         return HttpResponse(f.read())
 
+def search_page(request):
+    search_path = os.path.join(BASE_DIR, 'search.html')
+    if not os.path.exists(search_path):
+        raise Http404('Search page not found')
+    with open(search_path, encoding='utf-8') as f:
+        return HttpResponse(f.read())
+
+def website_database(request):
+    db_path = os.path.join(BASE_DIR, 'website_database.js')
+    if not os.path.exists(db_path):
+        raise Http404('Website database not found')
+    with open(db_path, encoding='utf-8') as f:
+        return HttpResponse(f.read(), content_type='application/javascript')
+
 def download_demogame(request):
     import zipfile
     from io import BytesIO
@@ -55,6 +69,8 @@ def download_demogame(request):
 
 urlpatterns = [
     path('', index),
+    path('search.html', search_page),
+    path('website_database.js', website_database),
     path('download/', download_demogame),
 ]
 
