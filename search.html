@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NESA Search Results</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #202124;
+            color: #e8eaed;
+        }
+        
+        .header {
+            background-color: #171717;
+            padding: 15px 30px;
+            border-bottom: 1px solid #303134;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1eff00;
+            text-shadow: 0 0 10px #1eff00;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .search-header {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .search-box {
+            width: 100%;
+            height: 44px;
+            font-size: 16px;
+            padding: 0 15px;
+            border: 1px solid #5f6368;
+            border-radius: 24px;
+            outline: none;
+            background-color: #303134;
+            color: #e8eaed;
+        }
+        
+        .search-box:focus {
+            border-color: #1eff00;
+            background-color: #303134;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .stats {
+            color: #bdc1c6;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        
+        .result {
+            margin-bottom: 35px;
+        }
+        
+        .result-url {
+            color: #bdc1c6;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .favicon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+        
+        .result-title {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .result-title a {
+            color: #8ab4f8;
+            text-decoration: none;
+        }
+        
+        .result-title a:hover {
+            text-decoration: underline;
+        }
+        
+        .result-title a:visited {
+            color: #c58af9;
+        }
+        
+        .result-snippet {
+            color: #bdc1c6;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .no-results {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .no-results h2 {
+            color: #e8eaed;
+            margin-bottom: 10px;
+        }
+        
+        .no-results p {
+            color: #bdc1c6;
+        }
+        
+        .search-button {
+            background-color: #1eff00;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .search-button:hover {
+            background-color: #17d900;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="nesa95 copy.html" class="logo">NESA 95</a>
+        <div class="search-header">
+            <input type="text" class="search-box" id="searchInput" placeholder="Search NESA...">
+        </div>
+        <button class="search-button" onclick="performSearch()">Find:</button>
+        <button class="search-button" onclick="clearSearch()">Clear:</button>
+        <button class="search-button" onclick="showAllWebsites()">Show All Websites</button>
+    </div>
+    
+    <div class="container">
+        <div class="stats" id="stats"></div>
+        <div id="results"></div>
+    </div>
+
+    <script src="website_database.js"></script>
+    <script>
+        // Get search query from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q') || '';
+        
+        // Set search box value
+        document.getElementById('searchInput').value = query;
+        
+        // Use the database from external file (fallback included)
+        const sampleResults = typeof websiteDatabase !== 'undefined' ? websiteDatabase : [
+            {title: "Polyblocks - Official Game", url: "https://polyblocks.onrender.com", snippet: "Polyblocks is a 3D block-building game."},
+            {title: "NESA Explorer", url: "https://polyblocks.onrender.com/explorer", snippet: "NESA Explorer web browser."},
+            {title: "YouTube", url: "https://www.youtube.com", snippet: "Videos, music and live streams."},
+            {title: "Google", url: "https://www.google.com", snippet: "Search the world's information."},
+            {title: "Wikipedia", url: "https://www.wikipedia.org", snippet: "Free online encyclopedia."},
+            {title: "GitHub", url: "https://github.com", snippet: "Where the world builds software."},
+            {title: "Stack Overflow", url: "https://stackoverflow.com", snippet: "Developer community."},
+            {title: "Reddit", url: "https://www.reddit.com", snippet: "Dive into anything."},
+            {title: "Twitter", url: "https://twitter.com", snippet: "Social media platform."},
+            {title: "Discord", url: "https://discord.com", snippet: "Chat for communities."}
+        ];
+        
+        function displayResults() {
+            const resultsDiv = document.getElementById('results');
+            const statsDiv = document.getElementById('stats');
+            
+            if (!query) {
+                resultsDiv.innerHTML = '<div class="no-results"><h2>No search query</h2><p>Please enter a search term.</p></div>';
+                return;
+            }
+            
+            // Filter results based on query
+            const filteredResults = sampleResults.filter(result => 
+                result.title.toLowerCase().includes(query.toLowerCase()) ||
+                result.snippet.toLowerCase().includes(query.toLowerCase()) ||
+                result.url.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            if (filteredResults.length === 0) {
+                resultsDiv.innerHTML = `<div class="no-results"><h2>No results found for "${query}"</h2><p>Try different keywords or check your spelling.</p></div>`;
+                statsDiv.innerHTML = '';
+                return;
+            }
+            
+            // Display stats
+            statsDiv.innerHTML = `About ${filteredResults.length} results (0.${Math.floor(Math.random() * 99) + 10} seconds)`;
+            
+            // Display results
+            let html = '';
+            filteredResults.forEach(result => {
+                // Highlight query in snippet
+                const highlightedSnippet = result.snippet.replace(
+                    new RegExp(query, 'gi'),
+                    match => `<strong>${match}</strong>`
+                );
+                
+                html += `
+                    <div class="result">
+                        <div class="result-url">
+                            <span class="favicon">🌐</span>
+                            <span>${result.url}</span>
+                        </div>
+                        <div class="result-title">
+                            <a href="${result.url}" target="_blank">${result.title}</a>
+                        </div>
+                        <div class="result-snippet">${highlightedSnippet}</div>
+                    </div>
+                `;
+            });
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.trim();
+            
+            if (searchTerm) {
+                window.location.href = `search_new.html?q=${encodeURIComponent(searchTerm)}`;
+            }
+        }
+        
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            window.location.href = 'search_new.html';
+        }
+        
+        function showAllWebsites() {
+            const resultsDiv = document.getElementById('results');
+            const statsDiv = document.getElementById('stats');
+            
+            statsDiv.innerHTML = `Showing all ${sampleResults.length} websites`;
+            
+            let html = '';
+            sampleResults.forEach(result => {
+                html += `
+                    <div class="result">
+                        <div class="result-url">
+                            <span class="favicon">🌐</span>
+                            <span>${result.url}</span>
+                        </div>
+                        <div class="result-title">
+                            <a href="${result.url}" target="_blank">${result.title}</a>
+                        </div>
+                        <div class="result-snippet">${result.snippet}</div>
+                    </div>
+                `;
+            });
+            
+            resultsDiv.innerHTML = html;
+            document.getElementById('searchInput').value = '';
+        }
+        
+        // Allow Enter key to search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        // Display results on load
+        displayResults();
+    </script>
+    
+    <br>No search query provided. Showing all results. Nesa 1995 - 1996</br>
+</body>
+</html>

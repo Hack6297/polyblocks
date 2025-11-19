@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NESA 95</title>
+    <title>Nesa Tab</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta name="description" content="Latest news and updates from NESA 1995">
+    <meta name="description" content="Latest news and updates from Nesa Tab">
     <style>
         body {
             font-family: "Comic Sans MS", cursive, sans-serif;
@@ -183,8 +183,8 @@
             const searchTerm = searchInput.value.trim();
             
             if (searchTerm) {
-                const googleUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchTerm);
-                window.open(googleUrl, '_blank');
+                // Use NESA search engine
+                window.location.href = 'search_new.html?q=' + encodeURIComponent(searchTerm);
             } else {
                 alert('Please enter something to search!');
             }
