@@ -50,6 +50,9 @@ def website_database(request):
     with open(db_path, encoding='utf-8') as f:
         return HttpResponse(f.read(), content_type='application/javascript')
 
+def ping(request):
+    return HttpResponse('pong', content_type='text/plain')
+
 def download_demogame(request):
     import zipfile
     from io import BytesIO
@@ -69,6 +72,7 @@ def download_demogame(request):
 
 urlpatterns = [
     path('', index),
+    path('ping', ping),
     path('search.html', search_page),
     path('website_database.js', website_database),
     path('download/', download_demogame),
