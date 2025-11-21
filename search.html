@@ -7,143 +7,186 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Tahoma", "MS Sans Serif", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #202124;
-            color: #e8eaed;
+            background-color: #d4d0c8;
+            color: #000000;
         }
         
         .header {
-            background-color: #171717;
-            padding: 15px 30px;
-            border-bottom: 1px solid #303134;
+            background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 50%, #d4d0c8 100%);
+            padding: 10px 20px;
+            border-bottom: 2px outset #ffffff;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         
         .logo {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
-            color: #1eff00;
-            text-shadow: 0 0 10px #1eff00;
+            color: #000080;
+            text-shadow: 1px 1px 0px #808080;
             text-decoration: none;
-            font-family: 'Courier New', monospace;
+            font-family: "Tahoma", "MS Sans Serif", sans-serif;
+            padding: 5px 10px;
+            background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 50%, #d4d0c8 100%);
+            border: 2px outset #ffffff;
+        }
+        
+        .logo:hover {
+            background: linear-gradient(to bottom, #ffffff 0%, #f5f4f2 50%, #e0ddd6 100%);
         }
         
         .search-header {
             flex: 1;
-            max-width: 500px;
+            max-width: 400px;
         }
         
         .search-box {
             width: 100%;
-            height: 44px;
-            font-size: 16px;
-            padding: 0 15px;
-            border: 1px solid #5f6368;
-            border-radius: 24px;
+            height: 24px;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-top: 1px solid #808080;
+            border-left: 1px solid #808080;
+            border-right: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
             outline: none;
-            background-color: #303134;
-            color: #e8eaed;
+            background-color: #ffffff;
+            color: #000000;
+            font-family: "Tahoma", "MS Sans Serif", sans-serif;
         }
         
         .search-box:focus {
-            border-color: #1eff00;
-            background-color: #303134;
+            border-top: 2px solid #000080;
+            border-left: 2px solid #000080;
         }
         
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #ffffff;
+            border: 2px inset #808080;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
         
         .stats {
-            color: #bdc1c6;
-            font-size: 14px;
-            margin-bottom: 25px;
+            color: #808080;
+            font-size: 11px;
+            margin-bottom: 20px;
+            padding: 5px;
+            background-color: #f5f5f5;
+            border: 1px solid #d4d0c8;
         }
         
         .result {
-            margin-bottom: 35px;
+            margin-bottom: 25px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 2px outset #ffffff;
         }
         
         .result-url {
-            color: #bdc1c6;
-            font-size: 14px;
+            color: #008000;
+            font-size: 11px;
             margin-bottom: 5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
+            font-weight: bold;
         }
         
         .favicon {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
+            width: 14px;
+            height: 14px;
         }
         
         .result-title {
-            font-size: 20px;
+            font-size: 14px;
             margin-bottom: 5px;
+            font-weight: bold;
         }
         
         .result-title a {
-            color: #8ab4f8;
-            text-decoration: none;
-        }
-        
-        .result-title a:hover {
+            color: #0000ff;
             text-decoration: underline;
         }
         
+        .result-title a:hover {
+            color: #ff0000;
+        }
+        
         .result-title a:visited {
-            color: #c58af9;
+            color: #800080;
         }
         
         .result-snippet {
-            color: #bdc1c6;
-            font-size: 14px;
-            line-height: 1.6;
+            color: #000000;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+        
+        .result-snippet strong {
+            background-color: #ffff00;
+            font-weight: bold;
         }
         
         .no-results {
             text-align: center;
             margin-top: 50px;
+            padding: 30px;
+            background-color: #f5f5f5;
+            border: 2px outset #ffffff;
         }
         
         .no-results h2 {
-            color: #e8eaed;
+            color: #000080;
             margin-bottom: 10px;
+            font-size: 18px;
         }
         
         .no-results p {
-            color: #bdc1c6;
+            color: #000000;
+            font-size: 12px;
         }
         
         .search-button {
-            background-color: #1eff00;
-            color: #1a1a1a;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: bold;
+            background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 50%, #d4d0c8 100%);
+            border-top: 1px solid #ffffff;
+            border-left: 1px solid #ffffff;
+            border-right: 1px solid #404040;
+            border-bottom: 1px solid #404040;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: normal;
             cursor: pointer;
             white-space: nowrap;
+            color: #000000;
+            font-family: "Tahoma", "MS Sans Serif", sans-serif;
         }
         
         .search-button:hover {
-            background-color: #17d900;
+            background: linear-gradient(to bottom, #ffffff 0%, #f5f4f2 50%, #e0ddd6 100%);
+        }
+        
+        .search-button:active {
+            background: #d4d0c8;
+            border-top: 1px solid #404040;
+            border-left: 1px solid #404040;
+            border-right: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+            padding: 6px 11px 4px 13px;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <a href="index.html" class="logo">NESA 95</a>
+        <a href="nesa95.html" class="logo">NESA 98</a>
         <div class="search-header">
             <input type="text" class="search-box" id="searchInput" placeholder="Search NESA...">
         </div>
@@ -197,13 +240,13 @@
             );
             
             if (filteredResults.length === 0) {
-                resultsDiv.innerHTML = `<div class="no-results"><h2>No results found for "${query}"</h2><p>Try different keywords or check your spelling.</p></div>`;
+                resultsDiv.innerHTML = `<div class="no-results"><h2>No results found for "${query}"</h2><p>Try different keywords or check your spelling.</p><button onclick="searchWebPrivately()" style="margin-top: 15px; padding: 8px 16px; background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 50%, #d4d0c8 100%); border: 2px outset #ffffff; cursor: pointer; font-family: 'Tahoma', 'MS Sans Serif', sans-serif; font-size: 11px;">🔒 Search Web Privately</button></div>`;
                 statsDiv.innerHTML = '';
                 return;
             }
             
             // Display stats
-            statsDiv.innerHTML = `About ${filteredResults.length} results (0.${Math.floor(Math.random() * 99) + 10} seconds)`;
+            statsDiv.innerHTML = `About ${filteredResults.length} results (0.${Math.floor(Math.random() * 99) + 10} seconds) &nbsp; <button onclick="searchWebPrivately()" style="padding: 4px 12px; background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 50%, #d4d0c8 100%); border: 2px outset #ffffff; cursor: pointer; font-family: 'Tahoma', 'MS Sans Serif', sans-serif; font-size: 11px;">🔒 Search Web Privately</button>`;
             
             // Display results
             let html = '';
@@ -245,6 +288,15 @@
             window.location.href = 'search.html';
         }
         
+        function searchWebPrivately() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            if (query) {
+                // Search on DuckDuckGo with privacy mode (kp=1)
+                window.open('https://duckduckgo.com/?q=' + encodeURIComponent(query) + '&kp=1', '_blank');
+            }
+        }
+        
         function showAllWebsites() {
             const resultsDiv = document.getElementById('results');
             const statsDiv = document.getElementById('stats');
@@ -282,6 +334,6 @@
         displayResults();
     </script>
     
-    <br>No search query provided. Showing all results. Nesa 1995 - 1996</br>
+    <br>No search query provided. Showing all results. Nesa 1995 - 1999</br>
 </body>
 </html>
